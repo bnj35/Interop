@@ -5,9 +5,12 @@ services:
         ports:
             - "8075:80"
         volumes:
-            - ./app/src:/var/www/html
+            - ./app:/var/www/html
         networks:
             - app-network
+        build:
+            context: .
+            dockerfile: Dockerfile
 
 networks:
     app-network:
