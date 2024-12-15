@@ -1,40 +1,47 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#map {
-  height: 45dvh;
-  width: 50dvw;
-  border-radius: 10px;
-  margin-bottom: 20vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: auto;
+    color: #272727;
 }
 
 body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ededed;
+}
+
+#map {
+    height: 45dvh;
+    width: 50dvw;
+    border-radius: 10px;
+    margin-bottom: 20vh;
+    background: #ededed;
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
 }
 
 #meteo_section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .meteo {
-  border-radius: 10px;
-  background-color: #fcfcfc;
-  border: 1px inset lightgrey;
-  margin: 2vw;
-  padding: 2vw 1vw;
+    border-radius: 10px;
+    background-color: #ededed;
+    border: none;
+    margin: 2vw;
+    padding: 3vw 2vw;
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
 }
 
 .meteo p {
-  margin: 1vw;
+    margin: 1vw;
 }

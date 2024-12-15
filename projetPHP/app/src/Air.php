@@ -8,9 +8,11 @@ $urlAir = "https://services3.arcgis.com/Is0UwT37raQYl9Jj/arcgis/rest/services/in
 $fileAir = file_get_contents($urlAir,false);
 $CleanAir = json_decode($fileAir, false);
 
-$AirQuality = $CleanAir->features[0]->attributes ;
+$AirQuality = print_r($CleanAir->features[0]->attributes) ;
 
 
-return print_r($AirQuality);
+
+
+return $AirQuality;
 
 }
