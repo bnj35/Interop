@@ -7,7 +7,7 @@ require_once './src/traffic.php';
 
 $trafficInfo = getTraffic();
 $xmlMeteo = xmlFile();
-$AirQuality = getAirQuality();
+$AirInfo = getAirQuality();
 
 
 $opts = array('http' => array('proxy'=> 'tcp://127.0.0.1:8080', 'request_fulluri'=> true), 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false));
@@ -15,8 +15,6 @@ $context = stream_context_create($opts);
 
 $IP = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
-print_r($details->message);
-
 ?>
 
 <html>
@@ -39,18 +37,27 @@ print_r($details->message);
     <?php echo $xmlMeteo; ?>
     </section>
     
-    <?php echo $AirQuality; ?>
+    <?php echo $AirInfo; ?>
 
-    <h1>Info Trafic :</h1>
+    <h2>Info Trafic :</h2>
     <section id="traffic_section">
-    <?php echo $trafficInfo; ?>
+        <div id="map"></div>
     </section>
-
-    <div id="map"></div>
-
     </body>
 
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('map').setView([48.69, 6.18], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        <?php foreach ($trafficInfo['incidents'] as $incident): 
+            list($lat, $lon) = explode(' ', $incident['location']['polyline']);
+        ?>
+            L.marker([<?php echo $lat; ?>, <?php echo $lon; ?>]).addTo(map)
+            .bindPopup(`<?php echo $incident['description']; ?>`)
+        <?php endforeach; ?>
+
     </script>
 </html>
