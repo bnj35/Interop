@@ -11,7 +11,6 @@ $CleanAir = json_decode($fileAir, false);
 $AirQuality = $CleanAir->features[0]->attributes ;
 
 
-
 return print_r($AirQuality);
 
 }

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#map {
+  height: 45dvh;
+  width: 50dvw;
+  border-radius: 10px;
+  margin-bottom: 20vh;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#meteo_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.meteo {
+  border-radius: 10px;
+  background-color: #fcfcfc;
+  border: 1px inset lightgrey;
+  margin: 2vw;
+  padding: 2vw 1vw;
+}
+
+.meteo p {
+  margin: 1vw;
+}

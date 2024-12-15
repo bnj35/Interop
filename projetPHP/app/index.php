@@ -2,51 +2,55 @@
 
 require_once'./src/xml.php';
 require_once'./src/Air.php';
+require_once './src/traffic.php';
 
+
+$trafficInfo = getTraffic();
 $xmlMeteo = xmlFile();
 $AirQuality = getAirQuality();
 
 
 $opts = array('http' => array('proxy'=> 'tcp://127.0.0.1:8080', 'request_fulluri'=> true), 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false));
 $context = stream_context_create($opts);
-// stream_context_set_default($opts);
 
 $IP = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
 print_r($details->message);
 
-
-////////////////////////////////////////////////////////////////
-
-$urlTraffic = "https://carto.g-ny.org/data/cifs/cifs_waze_v2.json";
-
-$fileTraffic = file_get_contents($urlTraffic, false);
-$decodeTraffic = json_decode($fileTraffic, false);
-
-for ($i = 0; $i < count($decodeTraffic->incidents); $i++) {
-    echo "Type: " . $decodeTraffic->incidents[$i]->type . "<br>";
-    echo "Description: " . $decodeTraffic->incidents[$i]->description . "<br>";
-    echo "Short Description: " . $decodeTraffic->incidents[$i]->short_description . "<br>";
-    echo "Start Time: " . $decodeTraffic->incidents[$i]->starttime . "<br>";
-    echo "End Time: " . $decodeTraffic->incidents[$i]->endtime . "<br>";
-    echo "Street: " . $decodeTraffic->incidents[$i]->location->street . "<br>";
-    echo "Location Description: " . $decodeTraffic->incidents[$i]->location->location_description . "<br>";
-    echo "Source Name: " . $decodeTraffic->incidents[$i]->source->name . "<br>";
-    echo "Update Time: " . $decodeTraffic->incidents[$i]->updatetime . "<br>";
-    echo "Creation Time: " . $decodeTraffic->incidents[$i]->creationtime . "<br>";
-    echo "ID: " . $decodeTraffic->incidents[$i]->id . "<br><br>";
-}
 ?>
 
 <html>
+
+<head>
+    <title>Projet PHP</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     <link rel="stylesheet" href="style.css">
+</head>
+               
     <body>
 
+    <h1>Prévisions Météo :</h1>
+    <section id="meteo_section">
     <?php echo $xmlMeteo; ?>
+    </section>
+    
     <?php echo $AirQuality; ?>
 
+    <h1>Info Trafic :</h1>
+    <section id="traffic_section">
+    <?php echo $trafficInfo; ?>
+    </section>
+
+    <div id="map"></div>
 
     </body>
+
     <script>
-        
+        var map = L.map('map').setView([51.505, -0.09], 13);
     </script>
 </html>

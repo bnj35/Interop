@@ -18,10 +18,10 @@ $xsl ->load('./src/meteo.xsl');
 $proc = new XSLTProcessor();
 $proc->importStyleSheet($xsl);
 
-$xmlFile  = $proc->transformToXML($xml);
+$xmlClean  = $proc->transformToXML($xml);
 
 
-return $xmlFile;
+return $xmlClean;
 
 }
 

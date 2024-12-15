@@ -1,53 +1,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html" indent="yes"/>
     <xsl:template match="/">
-        <html>
-            <head>
-                <title>Prévisions Météo</title>
-            </head>
-            <body>
-                <h1>Prévisions Météo :</h1>
-                <section id="meteo_section">
+
+               
                 <xsl:apply-templates select="previsions/echeance[position() &lt;= 7]"/>
-                </section>
-            </body>
-            <style>
-            *{
-                padding: 0;
-                margin: 0;
-                font-family: Arial, sans-serif;
-            }
 
-            body{
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-            }
 
-            #meteo_section{
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
-            }
-            
-            .meteo {
-                border-radius: 10px;
-                background-color: #fcfcfc;
-                border: 1px inset lightgrey;
-                margin: 2Vw;
-                padding: 2Vw 1vw;
-            }
-
-            .meteo p{
-                margin: 1Vw;
-            }
-
-            </style>
-        </html>
     </xsl:template>
 
     <xsl:template match="echeance">
