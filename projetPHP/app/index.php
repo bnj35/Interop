@@ -3,18 +3,18 @@
 require_once'./src/xml.php';
 require_once'./src/Air.php';
 require_once './src/traffic.php';
+require_once './src/Ip.php';
 
 
 $trafficInfo = getTraffic();
 $xmlMeteo = xmlFile();
 $AirInfo = getAirQuality();
+$ipAddress = getIp();
 
-
+///////passage de proxy///////////
 $opts = array('http' => array('proxy'=> 'tcp://127.0.0.1:8080', 'request_fulluri'=> true), 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false));
 $context = stream_context_create($opts);
 
-$IP = $_SERVER['REMOTE_ADDR'];
-$details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
 
 
 ?>
