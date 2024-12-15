@@ -15,6 +15,8 @@ $context = stream_context_create($opts);
 
 $IP = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
+
+
 ?>
 
 <html>
@@ -37,7 +39,10 @@ $details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
     <?php echo $xmlMeteo; ?>
     </section>
     
+    <h2>Qualité de l'air :</h2>
+    <section id="air_section">
     <?php echo $AirInfo; ?>
+    </section>
 
     <h2>Info Trafic :</h2>
     <section id="traffic_section">
@@ -58,6 +63,5 @@ $details = json_decode(file_get_contents("http://ip-api.com/json/{$IP}"));
             L.marker([<?php echo $lat; ?>, <?php echo $lon; ?>]).addTo(map)
             .bindPopup(`<?php echo $incident['description']; ?>`)
         <?php endforeach; ?>
-
     </script>
 </html>
