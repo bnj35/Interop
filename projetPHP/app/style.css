@@ -51,4 +51,14 @@ h2, h1 {
     margin: 2vw;
 }
 
+#air_color{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: #272727 1px solid;
+}
+
+#air_section{
+    gap: 1vw;
+}
 
