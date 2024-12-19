@@ -63,10 +63,13 @@ $lon = $Ip['lon'];
 
         <?php foreach ($trafficInfo['incidents'] as $incident): 
             list($lat, $lon) = explode(' ', $incident['location']['polyline']);
+            $starttime = date('d/m/Y H:i', strtotime($incident['starttime']));
+            $endtime = date('d/m/Y H:i', strtotime($incident['endtime']));
         ?>
             L.marker([<?php echo $lat; ?>, <?php echo $lon; ?>]).addTo(map)
-            .bindPopup(`<?php echo $incident['description'];
-                                echo $incident[''] ?>`)
+            .bindPopup(`<?php echo $incident['description'].'</br>';
+                                echo ' début le '.$starttime;
+                                echo ' fin le '.$endtime ?>`)
         <?php endforeach; ?>
     </script>
 </html>

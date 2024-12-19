@@ -45,23 +45,24 @@ function GetPlaces() {
                 stations.forEach(e => {
                     e.lat = parseFloat(e.lat);
                     e.lon = parseFloat(e.lon);
+                    var stationid = e.station_id;
+
                     let marker = L.marker([e.lat, e.lon]).addTo(map);
                     marker.bindPopup(e.name);
+                    marker.on('click', function (e) {
+                      console.log(e);
+                      fetch(StationsStatusUrl)
+                        .then((response) => response.json())
+                        .then((data) => {
+                          let stationsInfo = data.data.stations;
+                          let station = stationsInfo.find(s => s.station_id == stationid);
+                          marker.bindPopup("Nom: " + e.name + "<br> Vélos disponibles: " + station.num_bikes_available + "<br> Emplacements disponibles: " + station.num_docks_available).openPopup();
+                        });
+                    });
                     
                 });
             });
         } catch (e) {
-          console.log(e);
-        }
-        try {
-          fetch(StationsStatusUrl)
-            .then((response) => response.json())
-            .then((data) => {
-              let stationsInfo = data.data.stations;
-              console.log(stationsInfo);
-            });
-        }
-        catch (e) {
           console.log(e);
         }
       });
@@ -72,27 +73,3 @@ function GetPlaces() {
 
 GetPlaces();
 myGeolocator();
-
-
-
-//////////////////////////////////////////////////////////
-// const ctx = document.getElementById('myChart');
-
-// new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//     datasets: [{
-//       label: '# of Votes',
-//       data: [12, 19, 3, 5, 2, 3],
-//       borderWidth: 1
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// });

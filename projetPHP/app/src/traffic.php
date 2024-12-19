@@ -3,8 +3,6 @@
 function getTraffic() {
 $urlTraffic = "https://carto.g-ny.org/data/cifs/cifs_waze_v2.json";
 
-// $fileTraffic = file_get_contents($urlTraffic, false);
-
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, $urlTraffic);
@@ -16,6 +14,8 @@ $fileTraffic = curl_exec($ch);
 curl_close($ch);
 
 $decodeTraffic = json_decode($fileTraffic, true);
+
+
 
 return $decodeTraffic;
 
