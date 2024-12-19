@@ -17,8 +17,9 @@ body {
 }
 
 #map {
-    height: 45dvh;
-    width: 50dvw;
+    height: 45vh;
+    width: 90vw;
+    max-width: 600px;
     border-radius: 10px;
     margin-bottom: 20vh;
     background: #ededed;
@@ -51,14 +52,43 @@ h2, h1 {
     margin: 2vw;
 }
 
-#air_color{
+#air_color {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     border: #272727 1px solid;
 }
 
-#air_section{
+#air_section {
     gap: 1vw;
 }
 
+@media (max-width: 768px) {
+    #map {
+        height: 40vh;
+        width: 80vw;
+    }
+
+    .meteo {
+        padding: 2vw 1vw;
+    }
+
+    h2, h1 {
+        margin: 1vw;
+    }
+}
+
+@media (max-width: 480px) {
+    #map {
+        height: 35vh;
+        width: 100vw;
+    }
+
+    .meteo {
+        padding: 1vw 0.5vw;
+    }
+
+    h2, h1 {
+        margin: 0.5vw;
+    }
+}
