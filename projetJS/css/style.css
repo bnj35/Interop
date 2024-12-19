@@ -1,11 +1,138 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e5799, #2989d8, #7db9e8);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+
+header{
+    margin: 2vw 2vw;
+}
 
 #map {
-height: 50dvh;
-width: 50dvw;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.25em 1.875em rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 0.0625em solid rgba(255, 255, 255, 0.3);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #fff;
+    margin: 1.25em 0;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.625em 1.25em;
+    font-size: 1em;
+    box-shadow: 0 0.25em 1.875em rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1em;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+section:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+}
+
+#velo{
+    height: fit-content;
+    width: fit-content;
+}
+
+#airInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#airColor{
+    height: 3.125em;
+    width: 3.125em;
+    border-radius: 50%;
+    margin: 0.625em;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 0.625em;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.625em;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        gap: 2vh;
     }
+
+    #map {
+        height: 40vh;
+        width: 80vw;
+    }
+
+    section {
+        width: 90%;
+        height: auto;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #airInfo {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        gap: 1vh;
+    }
+
+    #map {
+        height: 30vh;
+        width: 90vw;
+    }
+
+    section {
+        width: 95%;
+        padding: 0.3125em 0.625em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.2em;
+        margin: 0.625em 0;
+    }
+}

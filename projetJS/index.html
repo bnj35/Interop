@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Circulations... Une page asynchrone croisant des API</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-    <script src="./js/app.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="./js/app.js" type="module" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div id="map"></div>
-    <canvas id="myChart"></canvas>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <h1>Circulations... Une page asynchrone croisant des API</h1>
+    </header>
+    <div class="col">
+      <div class="col">
+        <div class="row">
+          <section id="velo">
+            <h2>Les vélos en libre service</h2>
+            <div id="map"></div>
+          </section>
+
+          <section id="meteo">
+            <h2>La météo</h2>
+            <div id="meteo"></div>
+          </section>
+        </div>
+
+        <section id="air_section">
+          <h2>La qualité de l'air</h2>
+          <div id="airInfo">
+            <div id="air"></div>
+            <canvas id="airColor"></canvas>
+          </div>
+        </section>
+      </div>
+
+      <section id="covid">
+        <h2>La situation sanitaire</h2>
+        <div id="covid">
+          <canvas id="covidChart"></canvas>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
