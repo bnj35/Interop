@@ -28,8 +28,6 @@ async function getStations() {
 
 async function getStationStatut(Id) {
     try{
-        fetch("https://api.cyclocity.fr/contracts/nancy/gbfs/station_status.json")
-        .then((response) => response.json())
         const response = await fetch("https://api.cyclocity.fr/contracts/nancy/gbfs/station_status.json")
         const data = await response.json();
         return data.data.stations.find((station) => station.station_id === Id);
